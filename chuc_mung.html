@@ -14,9 +14,12 @@
 
     body {
       min-height: 100vh;
-      font-family: 'Courier New', Courier, monospace;
       background: #d4bfa2;
-      overflow-x: hidden;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: auto;
     }
 
     button,
@@ -26,8 +29,9 @@
 
     .page {
       position: relative;
-      width: 100%;
-      min-height: 100vh;
+      width: 1260px;
+      height: 700px;
+      flex: 0 0 1102px;
       background: #d4bfa2;
       overflow: hidden;
     }
@@ -43,105 +47,77 @@
       user-select: none;
     }
 
+    .tape-img {
+      object-fit: fill;
+    }
+
     /* =========================
        TRANG CHỦ
     ========================= */
 
-    .home-page {
-      padding: 40px 20px;
-    }
-
-    .home-title-tape {
-      position: absolute;
-      top: 28px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-3deg);
-      width: 540px;
-      height: 85px;
-      background: #9a351d;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 5px 0 rgba(0, 0, 0, 0.04);
-    }
-
-    .home-title-tape::before,
-    .home-title-tape::after,
-    .wish-title-tape::before,
-    .wish-title-tape::after,
-    .back-btn::before,
-    .back-btn::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 9px;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.1) 0 8px,
-        rgba(255, 255, 255, 0.05) 8px 15px
-      );
-    }
-
-    .home-title-tape::before,
-    .wish-title-tape::before,
-    .back-btn::before {
-      top: 5px;
-    }
-
-    .home-title-tape::after,
-    .wish-title-tape::after,
-    .back-btn::after {
-      bottom: 5px;
+    .home-title-frame {
+      width: 548px;
+      height: 88px;
+      left: 276px;
+      top: 24px;
+      transform: rotate(-3deg);
+      z-index: 7;
     }
 
     .home-title {
-      position: relative;
-      z-index: 2;
+      position: absolute;
+      width: 548px;
+      left: 276px;
+      top: 45px;
+      transform: rotate(-3deg);
+      z-index: 8;
+      text-align: center;
       color: #fff;
-      font-size: 56px;
+      font-size: 54px;
+      line-height: 1;
       letter-spacing: 5px;
       font-weight: 700;
       text-transform: uppercase;
     }
 
-    .home-card {
-      position: absolute;
+    .home-input-frame {
       width: 470px;
-      min-height: 240px;
+      height: 300px;
       left: 150px;
       top: 205px;
-      background: #f5f0e4;
-      z-index: 5;
-      padding: 62px 42px 38px;
       transform: rotate(-1.5deg);
-      box-shadow: 0 12px 22px rgba(66, 45, 28, 0.12);
+      z-index: 4;
+    }
+
+    .home-card-content {
+      position: absolute;
+      width: 375px;
+      left: 195px;
+      top: 275px;
+      z-index: 9;
+      transform: rotate(-1.5deg);
+      text-align: center;
     }
 
     .home-card-title {
-      text-align: center;
       font-size: 20px;
       font-weight: 700;
-      margin-bottom: 20px;
       color: #111;
-    }
-
-    .name-input-wrap {
-      position: relative;
-      width: 100%;
+      margin-bottom: 18px;
+      white-space: nowrap;
     }
 
     .name-input {
-      width: 100%;
-      height: 48px;
+      width: 310px;
+      height: 46px;
       border: 2px solid #111;
       border-radius: 15px;
       background: transparent;
       padding: 0 18px;
-      font-size: 15px;
+      font-size: 11px;
       outline: none;
       color: #111;
+      text-align: left;
     }
 
     .name-input::placeholder {
@@ -151,11 +127,12 @@
 
     .open-btn {
       display: block;
-      margin: 22px auto 0;
-      padding: 11px 28px;
+      width: 195px;
+      height: 54px;
+      margin: 23px auto 0;
       border: 2px solid #111;
       border-radius: 14px;
-      background: #fff8ea;
+      background: transparent;
       color: #111;
       font-size: 17px;
       font-weight: 700;
@@ -165,17 +142,18 @@
 
     .open-btn:hover {
       transform: translateY(-2px);
-      background: #fff1d0;
+      background: rgba(255, 255, 255, 0.25);
     }
 
     .home-video-box {
       position: absolute;
       width: 320px;
-      height: 185px;
-      left: 350px;
-      bottom: 45px;
-      background: linear-gradient(#ccefff 0 52%, #92bb22 52% 100%);
-      border: 14px solid #f3efe4;
+      height: 180px;
+      width: 320px;
+      height: 180px;
+      left: 390px;
+      top: 470px;
+      border: 14px solid #edeae1;
       transform: rotate(-6deg);
       z-index: 7;
       overflow: hidden;
@@ -187,151 +165,147 @@
       inset: 0;
     }
 
-    .home-video-placeholder::before {
-      content: '';
-      position: absolute;
-      width: 90px;
-      height: 30px;
-      top: 28px;
-      left: 96px;
-      background: #fff;
-      border-radius: 30px;
-      box-shadow: 52px 4px 0 -8px #fff;
-      opacity: 0.9;
-    }
 
-    .home-video-placeholder::after {
-      content: 'Chỗ thêm video';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 18px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: 700;
-      color: rgba(0, 0, 0, 0.45);
-    }
 
     .home-video-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center center;
+
+        display: block;
+        z-index: 2;
     }
 
-    .home-thank-note {
-      position: absolute;
-      right: 70px;
+    .home-thank-frame {
+      width: 360px;
+      height: 410px;
+      right: 30px;
       top: 165px;
-      width: 350px;
-      min-height: 390px;
-      background: #f4efe4;
-      border-radius: 8px;
-      padding: 44px 34px 34px;
-      z-index: 4;
       transform: rotate(5deg);
-      box-shadow: 0 12px 22px rgba(66, 45, 28, 0.1);
-      color: #191919;
-      line-height: 1.25;
-      font-size: 15px;
+      z-index: 4;
     }
 
-    .home-thank-note h2 {
+    .home-thank-text {
+      position: absolute;
+      right: 49px;
+      top: 190px;
+      width: 300px;
+      height: 330px;
+      z-index: 8;
+      transform: rotate(6deg);
+      color: #191919;
+      line-height: 1.2;
+      font-size: 14.5px;
+      overflow: hidden;
+    }
+
+    .home-thank-text h2 {
       text-align: center;
       font-size: 18px;
       margin-bottom: 12px;
       font-weight: 500;
     }
 
-    .home-thank-note p + p {
+    .home-thank-text p + p {
       margin-top: 16px;
     }
 
     .home-graduation-img {
-      width: 245px;
-      left: 18px;
-      top: 265px;
+      width: 200px;
+      left: 5px;
+      top: 270px;
       transform: rotate(7deg);
-      z-index: 6;
+      z-index: 8;
     }
 
     .home-uel-img {
-      width: 245px;
-      left: 120px;
-      bottom: 58px;
-      transform: rotate(-9deg);
-      z-index: 6;
+      width: 250px;
+      left: 100px;
+      top: 460px;
+      transform: rotate(15deg);
+      z-index: 10;
     }
 
     .home-flower {
       width: 170px;
-      left: 495px;
-      top: 145px;
+      left: 550px;
+      top: 150px;
       transform: rotate(-5deg);
-      z-index: 8;
+      z-index: 10;
     }
 
     .home-leaf {
-      width: 155px;
-      left: 16px;
-      bottom: 20px;
-      transform: rotate(-22deg);
-      z-index: 4;
+      width: 200px;
+      left: 10px;
+      top: 400px;
+      transform: rotate(15deg);
+      z-index: 9;
     }
 
-    .home-bg-paper-1 {
-      width: 215px;
-      left: 58px;
-      top: 170px;
-      transform: rotate(1deg);
+    .home-bg-paper-left {
+      width: 220px;
+      left: 60px;
+      top: 175px;
+      transform: rotate(2deg);
       opacity: 0.72;
       z-index: 1;
     }
 
-    .home-bg-paper-2 {
-      width: 250px;
-      left: 410px;
+    .home-bg-paper-top {
+      width: 245px;
+      left: 465px;
       top: 145px;
       transform: rotate(8deg);
       opacity: 0.75;
       z-index: 2;
     }
 
+    .home-bg-paper-mid {
+      width: 300px;
+      left: 240px;
+      top: 450px;
+      transform: rotate(-6deg);
+      opacity: 1;
+      z-index: 7;
+    }
+
     /* =========================
        TRANG LỜI CHÚC
     ========================= */
 
-    .wish-page {
-      padding: 70px 20px;
-    }
-
-    .wish-title-tape {
-      position: absolute;
-      top: 150px;
-      left: 190px;
+    .wish-title-frame {
       width: 690px;
-      height: 70px;
-      background: #9a351d;
-      z-index: 4;
+      height: 78px;
+      left: 190px;
+      top: 128px;
       transform: rotate(-1.5deg);
-      display: flex;
-      align-items: center;
-      padding-left: 90px;
+      z-index: 5;
     }
 
     .wish-title {
-      position: relative;
-      z-index: 2;
-      font-size: 58px;
+      position: absolute;
+      left: 275px;
+      top: 145px;
+      width: 560px;
+      z-index: 8;
       color: #fff;
+      font-size: 54px;
+      line-height: 1;
       font-weight: 700;
       letter-spacing: 2px;
+      transform: rotate(-1.5deg);
+      white-space: nowrap;
     }
 
     .wish-paper {
       position: absolute;
       width: 890px;
-      min-height: 280px;
+      min-height: 285px;
       left: 92px;
       top: 215px;
       padding: 82px 100px 55px;
@@ -361,13 +335,6 @@
       clip-path: polygon(0 0, 100% 0, 100% 55%, 92% 68%, 84% 45%, 76% 70%, 66% 48%, 57% 74%, 48% 45%, 39% 70%, 30% 48%, 21% 75%, 12% 52%, 5% 70%, 0 58%);
     }
 
-    .wish-greeting {
-      font-size: 23px;
-      font-weight: 700;
-      margin-bottom: 28px;
-      color: #111;
-    }
-
     .wish-message {
       max-width: 650px;
       font-size: 23px;
@@ -378,19 +345,41 @@
 
     .back-btn {
       position: absolute;
-      right: 75px;
+      right: 70px;
       bottom: 28px;
-      width: 380px;
+      width: 500px;
       height: 64px;
       border: none;
-      background: #9a351d;
-      color: #fff;
+      background: transparent;
       z-index: 8;
-      font-size: 35px;
-      font-weight: 700;
       cursor: pointer;
       transform: rotate(-1deg);
       transition: transform 0.2s ease, filter 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .back-btn-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .back-btn span {
+      position: relative;
+      z-index: 2;
+      display: block;
+      color: #fff;
+      font-size: 34px;
+      line-height: 64px;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .back-btn:hover {
@@ -403,7 +392,7 @@
       right: 85px;
       top: 90px;
       transform: rotate(12deg);
-      z-index: 6;
+      z-index: 7;
     }
 
     .wish-leaf {
@@ -422,124 +411,6 @@
       opacity: 0.55;
       z-index: 1;
     }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 900px) {
-      .page {
-        min-height: 100svh;
-      }
-
-      .home-title-tape {
-        width: 82vw;
-        height: 72px;
-        top: 25px;
-      }
-
-      .home-title {
-        font-size: 38px;
-      }
-
-      .home-card {
-        width: 78vw;    
-        left: 50%;
-        top: 175px;
-        transform: translateX(-50%) rotate(-1.5deg);
-        padding: 48px 28px 30px;
-      }
-
-      .home-thank-note {
-        display: none;
-      }
-
-      .home-graduation-img {
-        width: 150px;
-        left: 10px;
-        top: 350px;
-      }
-
-      .home-uel-img {
-        width: 180px;
-        left: 95px;
-        bottom: 45px;
-      }
-
-      .home-video-box {
-        width: 250px;
-        height: 150px;
-        left: auto;
-        right: 20px;
-        bottom: 120px;
-      }
-
-      .home-flower {
-        width: 120px;
-        right: 20px;
-        left: auto;
-        top: 115px;
-      }
-
-      .home-leaf {
-        width: 120px;
-        left: -12px;
-      }
-
-      .home-bg-paper-1,
-      .home-bg-paper-2 {
-        display: none;
-      }
-
-      .wish-title-tape {
-        width: 76vw;
-        height: 62px;
-        left: 50%;
-        top: 130px;
-        transform: translateX(-50%) rotate(-1.5deg);
-        padding-left: 45px;
-      }
-
-      .wish-title {
-        font-size: 38px;
-      }
-
-      .wish-paper {
-        width: 82vw;
-        left: 50%;
-        top: 205px;
-        transform: translateX(-50%) rotate(-3deg);
-        padding: 65px 35px 40px;
-      }
-
-      .wish-greeting,
-      .wish-message {
-        font-size: 18px;
-      }
-
-      .wish-flower {
-        width: 115px;
-        right: 20px;
-        top: 90px;
-      }
-
-      .wish-leaf {
-        width: 120px;
-        left: -35px;
-        top: 270px;
-      }
-
-      .back-btn {
-        width: 74vw;
-        right: 50%;
-        transform: translateX(50%) rotate(-1deg);
-        font-size: 27px;
-      }
-
-      .back-btn:hover {
-        transform: translateX(50%) rotate(-1deg) translateY(-3px);
-      }
-    }
   </style>
 </head>
 <body>
@@ -547,43 +418,42 @@
        TRANG CHỦ
   ========================== -->
   <section id="homePage" class="page home-page">
-    <!-- Decor trang chủ: thay đường dẫn ảnh nếu bạn đổi tên file -->
+    <img src="assets/anh_1.png" class="decor home-bg-paper-left" alt="Giấy decor" />
+    <img src="assets/anh_2.png" class="decor home-bg-paper-top" alt="Giấy decor" />
+    <img src="assets/anh_3.png" class="decor home-bg-paper-mid" alt="Giấy decor" />
+
     <img src="assets/anh_tot_nghiep.png" class="decor home-graduation-img" alt="Ảnh tốt nghiệp" />
     <img src="assets/anh_bang_uel.png" class="decor home-uel-img" alt="Ảnh bằng UEL" />
     <img src="assets/flower.png" class="decor home-flower" alt="Hoa decor" />
     <img src="assets/leaf_1.png" class="decor home-leaf" alt="Lá decor" />
-    <img src="assets/anh_2.png" class="decor home-bg-paper-1" alt="Giấy decor" />
-    <img src="assets/anh_3.png" class="decor home-bg-paper-2" alt="Giấy decor" />
 
-    <div class="home-title-tape">
-      <h1 class="home-title">Hộp lời chúc</h1>
-    </div>
+    <img src="assets/khung_hop_loi_chuc.png" class="decor tape-img home-title-frame" alt="Khung tiêu đề" />
+    <h1 class="home-title">Hộp lời chúc</h1>
 
-    <div class="home-card">
+    <img src="assets/khung_nhap_ho_ten.png" class="decor home-input-frame" alt="Khung nhập họ tên" />
+    <div class="home-card-content">
       <h2 class="home-card-title">Xin chào! Bồ là ai dợ?</h2>
-
-      <div class="name-input-wrap">
-        <input
-          id="fullNameInput"
-          class="name-input"
-          type="text"
-          placeholder="Nhập họ tên của bạn (Ví dụ: Nguyễn Văn A)"
-          autocomplete="off"
-        />
-      </div>
-
+      <input
+        id="fullNameInput"
+        class="name-input"
+        type="text"
+        placeholder="Nhập họ tên của bạn (Ví dụ: Nguyễn Văn A)"
+        autocomplete="off"
+      />
       <button id="openWishBtn" class="open-btn">Mở lời chúc</button>
     </div>
 
-    <!-- Đây là chỗ để sau này bạn thêm video -->
     <div class="home-video-box">
       <div class="home-video-placeholder"></div>
 
-      <!-- Khi có video, bỏ comment dòng dưới và thay video.mp4 bằng file của bạn -->
-      <!-- <video src="./assets/video.mp4" autoplay muted loop playsinline></video> -->
+      ! <video src="assets\video_compressed.mp4" autoplay muted loop playsinline></video> >
     </div>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="assets/audio_1.mp3" type="audio/mpeg">
+    </audio>
 
-    <article class="home-thank-note">
+    <img src="assets/khung_loi_cam_on.png" class="decor home-thank-frame" alt="Khung lời cảm ơn" />
+    <article class="home-thank-text">
       <h2>Lời cảm ơn</h2>
       <p>
         Trong hành trình 4 năm đại học, thật tuyệt vì khi có những con người đã cùng mình đi qua thật nhiều khoảnh khắc đáng nhớ.
@@ -601,23 +471,23 @@
        TRANG LỜI CHÚC
   ========================== -->
   <section id="wishPage" class="page wish-page hidden">
-    <!-- Decor trang lời chúc -->
-    <img src="./assets/flower.png" class="decor wish-flower" alt="Hoa decor" />
-    <img src="./assets/leaf_1.png" class="decor wish-leaf" alt="Lá decor" />
-    <img src="./assets/anh_1.png" class="decor wish-bg-paper" alt="Giấy decor" />
+    <img src="assets/flower.png" class="decor wish-flower" alt="Hoa decor" />
+    <img src="assets/leaf_1.png" class="decor wish-leaf" alt="Lá decor" />
+    <img src="assets/anh_1.png" class="decor wish-bg-paper" alt="Giấy decor" />
 
-    <div class="wish-title-tape">
-      <h1 id="greetingTitle" class="wish-title">Xin chào ___,</h1>
-    </div>
+    <img src="assets/khung_hop_loi_chuc.png" class="decor tape-img wish-title-frame" alt="Khung xin chào" />
+    <h1 id="greetingTitle" class="wish-title">Xin chào ___,</h1>
 
     <div class="wish-paper">
-      <p id="wishGreeting" class="wish-greeting">Xin chào bạn,</p>
       <p id="wishMessage" class="wish-message">
         Cảm ơn vì đã đồng hành cùng mình trong những năm tháng đại học thật đáng nhớ.
       </p>
     </div>
 
-    <button id="backHomeBtn" class="back-btn">Quay lại trang chủ</button>
+    <button id="backHomeBtn" class="back-btn">
+      <img src="assets/khung_hop_loi_chuc.png" class="back-btn-frame" alt="" />
+      <span>Quay lại trang chủ</span>
+    </button>
   </section>
 
   <script>
@@ -627,10 +497,9 @@
     const homePage = document.getElementById('homePage');
     const wishPage = document.getElementById('wishPage');
     const greetingTitle = document.getElementById('greetingTitle');
-    const wishGreeting = document.getElementById('wishGreeting');
     const wishMessage = document.getElementById('wishMessage');
 
-    const wishes = [
+    const defaultWishes = [
       'Cảm ơn vì đã cùng mình đi qua những năm tháng đại học thật nhiều kỷ niệm. Mong rằng chặng đường phía trước của bạn sẽ luôn rực rỡ, bình an và đầy những điều đáng tự hào.',
       'Dù sau này mỗi người một hướng, mình vẫn luôn trân trọng khoảng thời gian chúng ta đã cùng cười, cùng cố gắng và cùng trưởng thành. Chúc bạn luôn vững vàng và hạnh phúc trên con đường mình chọn.',
       'Thanh xuân đại học đẹp hơn vì có bạn trong hành trình này. Cảm ơn vì đã xuất hiện, đồng hành và để lại những ký ức rất đáng quý. Chúc bạn luôn thành công và gặp nhiều điều tốt lành.',
@@ -638,37 +507,98 @@
       'Chúc bạn sau lễ tốt nghiệp sẽ bước vào một hành trình mới với thật nhiều niềm tin, may mắn và cơ hội. Cảm ơn vì đã cùng mình tạo nên một thời sinh viên không thể nào quên.'
     ];
 
-    function getLastTwoWords(fullName) {
-      const words = fullName.trim().replace(/\s+/g, ' ').split(' ').filter(Boolean);
+    /* 
+      Danh sách người có lời chúc riêng.
+      Viết tên ở dạng không dấu, chữ thường.
+    */
+    const personalWishes = {
+      'Nguyễn An Ninh': 'An Ninh ơi, cảm ơn vì đã luôn là một người bạn thật đáng quý trong những năm tháng đại học. Chúc bạn sau tốt nghiệp luôn mạnh mẽ, may mắn và đạt được những điều mình mong muốn.',
 
+      'Trần Bảo Ngọc': 'Bảo Ngọc ơi, cảm ơn vì đã cùng mình đi qua thật nhiều kỷ niệm đẹp. Mong rằng hành trình phía trước của bạn sẽ luôn rực rỡ, bình an và nhiều niềm vui.',
+
+      'Lê Minh Anh': 'Minh Anh ơi, cảm ơn vì đã là một phần trong thanh xuân đại học của mình. Chúc bạn luôn giữ được sự tự tin, nhiệt huyết và gặp thật nhiều cơ hội tốt.'
+    };
+
+    function getLastTwoWords(fullName) {
+      const words = fullName.trim().split(' ').filter(Boolean);
       if (words.length === 0) return 'bạn';
       if (words.length === 1) return words[0];
-
       return words.slice(-2).join(' ');
     }
 
-    function getRandomWish() {
-      const index = Math.floor(Math.random() * wishes.length);
-      return wishes[index];
+    function normalizeName(name) {
+      return name
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/\s+/g, ' ');
     }
+
+    function getRandomWish() {
+      const index = Math.floor(Math.random() * defaultWishes.length);
+      return defaultWishes[index];
+    }
+
+    function getWishForName(fullName) {
+      const normalizedFullName = normalizeName(fullName);
+      const normalizedShortName = normalizeName(getLastTwoWords(fullName));
+
+      const normalizedPersonalWishes = {};
+
+      Object.keys(personalWishes).forEach(function (nameKey) {
+        normalizedPersonalWishes[normalizeName(nameKey)] = personalWishes[nameKey];
+      });
+
+      if (normalizedPersonalWishes[normalizedFullName]) {
+        return normalizedPersonalWishes[normalizedFullName];
+      }
+
+      if (normalizedPersonalWishes[normalizedShortName]) {
+        return normalizedPersonalWishes[normalizedShortName];
+      }
+
+      return getRandomWish();
+    }
+    
 
     function showWishPage() {
       const fullName = fullNameInput.value;
       const displayName = getLastTwoWords(fullName);
-      const randomWish = getRandomWish();
+      const wish = getWishForName(fullName);
 
-      greetingTitle.textContent = `Xin chào ${displayName},`;
-      wishGreeting.textContent = `Xin chào ${displayName},`;
-      wishMessage.textContent = randomWish;
+      greetingTitle.textContent = 'Xin chào ' + displayName + ',';
+      wishMessage.textContent = wish;
 
       homePage.classList.add('hidden');
       wishPage.classList.remove('hidden');
+    }
+    
+    function playMusicFromStart() {
+      bgMusic.currentTime = 0;
+
+      const playPromise = bgMusic.play();
+
+      if (playPromise !== undefined) {
+        playPromise.catch(function () {
+          document.addEventListener('click', function startAfterFirstClick() {
+            bgMusic.currentTime = 0;
+            bgMusic.play();
+            document.removeEventListener('click', startAfterFirstClick);
+          });
+        });
+      }
     }
 
     function showHomePage() {
       wishPage.classList.add('hidden');
       homePage.classList.remove('hidden');
+
+      playMusicFromStart();
     }
+
+window.addEventListener('load', playMusicFromStart);
 
     openWishBtn.addEventListener('click', showWishPage);
     backHomeBtn.addEventListener('click', showHomePage);
