@@ -56,18 +56,18 @@
     ========================= */
 
     .home-title-frame {
-      width: 548px;
+      width: 850px;
       height: 88px;
-      left: 276px;
-      top: 24px;
+      left: 150px;
+      top: 20px;
       transform: rotate(-3deg);
       z-index: 7;
     }
 
     .home-title {
       position: absolute;
-      width: 548px;
-      left: 276px;
+      width: 750px;
+      left: 200px;
       top: 45px;
       transform: rotate(-3deg);
       z-index: 8;
@@ -182,9 +182,9 @@
     }
 
     .home-thank-frame {
-      width: 360px;
-      height: 410px;
-      right: 30px;
+      width: 500px;
+      height: 450px;
+      right: -38px;
       top: 165px;
       transform: rotate(5deg);
       z-index: 4;
@@ -443,7 +443,7 @@
         }
 
         .home-title-frame {
-          width: 340px;
+          width: 400px;
           height: 70px;
           left: 50%;
           top: 30px;
@@ -451,11 +451,11 @@
         }
 
         .home-title {
-          width: 340px;
+          width: 460px;
           left: 50%;
-          top: 50px;
+          top: 55px;
           transform: translateX(-50%) rotate(-3deg);
-          font-size: 32px;
+          font-size: 25px;
           letter-spacing: 2px;
         }
 
@@ -509,8 +509,8 @@
         }
 
         .home-thank-frame {
-          width: 370px;
-          height: 410px;
+          width: 400px;
+          height: 430px;
           left: 50%;
           right: auto;
           top: 525px;
@@ -559,14 +559,14 @@
           width: 100px;
           left: auto;
           right: 25px;
-          top: 900px;
+          top: 820px;
           transform: rotate(8deg);
         }
 
         .home-leaf {
           width: 125px;
           left: 5px;
-          top: 850px;
+          top: 820px;
           transform: rotate(90deg);
         }
 
@@ -577,7 +577,7 @@
         }
 
         .wish-title-frame {
-          width: 400px;
+          width: 500px;
           height: 62px;
           left: 50%;
           top: 42px;
@@ -585,7 +585,7 @@
         }
 
         .wish-title {
-          width: 330px;
+          width: 500px;
           left: 50%;
           top: 58px;
           transform: translateX(-50%) rotate(-2deg);
@@ -698,6 +698,7 @@
         }
       }
 
+
   </style>
 </head>
 <body>
@@ -715,7 +716,7 @@
     <img src="assets/leaf_1.png" class="decor home-leaf" alt="Lá decor" />
 
     <img src="assets/khung_hop_loi_chuc.png" class="decor tape-img home-title-frame" alt="Khung tiêu đề" />
-    <h1 class="home-title">Hộp lời chúc</h1>
+    <h1 class="home-title">Một Chút Yêu Thương</h1>
 
     <img src="assets/khung_nhap_ho_ten.png" class="decor home-input-frame" alt="Khung nhập họ tên" />
     <div class="home-card-content">
@@ -742,16 +743,16 @@
     <article class="home-thank-text">
       <h2>Lời cảm ơn</h2>
       <p>
-        Trong hành trình 4 năm đại học, thật tuyệt vì khi có những con người đã cùng mình đi qua thật nhiều khoảnh khắc đáng nhớ.
+        Trong hành trình 4 năm đại học, thật tuyệt vì đã có những con người cùng Subin đi qua thật nhiều khoảnh khắc đáng nhớ.
       </p>
       <p>
         4 năm không quá dài, nhưng đủ để chúng ta có những kỷ niệm mà sau này nhắc lại chắc chắn sẽ mỉm cười. Dù tương lai mỗi người sẽ chọn cho mình một con đường riêng, mình vẫn luôn trân trọng vì chúng ta đã từng đồng hành cùng nhau trong những năm tháng thanh xuân đẹp nhất.
       </p>
       <p>
-        Cảm ơn cậu đã là một phần trong hành trình đại học của mình.
+        Cảm ơn mọi người đã là một phần trong hành trình của Subin.
       </p>
     </article>
-  </section>
+  </section>  
   <section id="transitionPage" class="page transition-page hidden">
     <canvas id="heart"></canvas>
   </section>
@@ -801,13 +802,7 @@
       Danh sách người có lời chúc riêng.
       Viết tên ở dạng không dấu, chữ thường.
     */
-    const personalWishes = {
-      'Nguyễn An Ninh': 'Cảm ơn vì đã luôn là một người bạn thật đáng quý trong những năm tháng đại học. Chúc bạn sau tốt nghiệp luôn mạnh mẽ, may mắn và đạt được những điều mình mong muốn.',
-
-      'Trần Bảo Ngọc': 'Bảo Ngọc ơi, cảm ơn vì đã cùng mình đi qua thật nhiều kỷ niệm đẹp. Mong rằng hành trình phía trước của bạn sẽ luôn rực rỡ, bình an và nhiều niềm vui.',
-
-      'Lê Minh Anh': 'Minh Anh ơi, cảm ơn vì đã là một phần trong thanh xuân đại học của mình. Chúc bạn luôn giữ được sự tự tin, nhiệt huyết và gặp thật nhiều cơ hội tốt.'
-    };
+    let personalWishes = {};
 
     function getLastTwoWords(fullName) {
       const words = fullName.trim().split(' ').filter(Boolean);
@@ -826,6 +821,67 @@
         .replace(/\s+/g, ' ');
     }
 
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let value = '';
+      let insideQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"' && insideQuotes && nextChar === '"') {
+          value += '"';
+          i++;
+        } else if (char === '"') {
+          insideQuotes = !insideQuotes;
+        } else if (char === ',' && !insideQuotes) {
+          row.push(value.trim());
+          value = '';
+        } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+          if (value || row.length) {
+            row.push(value.trim());
+            rows.push(row);
+            row = [];
+            value = '';
+          }
+          if (char === '\r' && nextChar === '\n') i++;
+        } else {
+          value += char;
+        }
+      }
+
+      if (value || row.length) {
+        row.push(value.trim());
+        rows.push(row);
+      }
+
+      return rows;
+    }
+
+    async function loadWishesFromCSV() {
+      try {
+        const response = await fetch('assets/wishes.csv');
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        // Bỏ dòng tiêu đề: full_name,wish
+        rows.slice(1).forEach(function (row) {
+          const fullName = row[0];
+          const wish = row[1];
+
+          if (fullName && wish) {
+            personalWishes[normalizeName(fullName)] = wish;
+          }
+        });
+
+        console.log('Đã load lời chúc từ CSV:', personalWishes);
+      } catch (error) {
+        console.error('Không đọc được file wishes.csv:', error);
+      }
+    }
+
     function getRandomWish() {
       const index = Math.floor(Math.random() * defaultWishes.length);
       return defaultWishes[index];
@@ -835,22 +891,16 @@
       const normalizedFullName = normalizeName(fullName);
       const normalizedShortName = normalizeName(getLastTwoWords(fullName));
 
-      const normalizedPersonalWishes = {};
-
-      Object.keys(personalWishes).forEach(function (nameKey) {
-        normalizedPersonalWishes[normalizeName(nameKey)] = personalWishes[nameKey];
-      });
-
-      if (normalizedPersonalWishes[normalizedFullName]) {
-        return normalizedPersonalWishes[normalizedFullName];
+      if (personalWishes[normalizedFullName]) {
+        return personalWishes[normalizedFullName];
       }
 
-      if (normalizedPersonalWishes[normalizedShortName]) {
-        return normalizedPersonalWishes[normalizedShortName];
+      if (personalWishes[normalizedShortName]) {
+        return personalWishes[normalizedShortName];
       }
 
       return getRandomWish();
-    }
+    }  
     
 
     function showWishPage() {
@@ -895,6 +945,9 @@
 
       playMusicFromStart();
     }
+
+
+window.addEventListener('load', loadWishesFromCSV);
 
 window.addEventListener('load', playMusicFromStart);
 
