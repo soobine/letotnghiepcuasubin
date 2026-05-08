@@ -732,7 +732,7 @@
     </div>
 
     <div class="home-video-box">
-      <video src="assets/video_compressed.mp4" autoplay muted loop playsinline></video>
+      <video id="homeVideo" src="assets/video_compressed.mp4" muted loop playsinline preload="auto"></video>
     </div>
 
     <audio id="bgMusic" loop preload="auto">
@@ -789,6 +789,8 @@
     const greetingTitle = document.getElementById('greetingTitle');
     const wishMessage = document.getElementById('wishMessage');
     const bgMusic = document.getElementById('bgMusic');
+    const homeVideo = document.getElementById('homeVideo');
+    let hasStartedMedia = false;
 
     const defaultWishes = [
       'Cảm ơn vì đã cùng mình đi qua những năm tháng đại học thật nhiều kỷ niệm. Mong rằng chặng đường phía trước của bạn sẽ luôn rực rỡ, bình an và đầy những điều đáng tự hào.',
@@ -923,33 +925,43 @@
       }, 6000);
     }
     
-    function playMusicFromStart() {
+    function playMediaFromStart() {
+      if (!bgMusic || !homeVideo) return;
+
       bgMusic.currentTime = 0;
+      homeVideo.currentTime = 0;
 
-      const playPromise = bgMusic.play();
+      bgMusic.play();
+      homeVideo.play();
 
-      if (playPromise !== undefined) {
-        playPromise.catch(function () {
-          document.addEventListener('click', function startAfterFirstClick() {
-            bgMusic.currentTime = 0;
-            bgMusic.play();
-            document.removeEventListener('click', startAfterFirstClick);
-          });
-        });
-      }
+      hasStartedMedia = true;
     }
 
     function showHomePage() {
+      wishPage.classList.remove('show');
       wishPage.classList.add('hidden');
+      transitionPage.classList.add('hidden');
       homePage.classList.remove('hidden');
 
-      playMusicFromStart();
+      if (bgMusic && homeVideo) {
+        bgMusic.pause();
+        homeVideo.pause();
+
+        bgMusic.currentTime = 0;
+        homeVideo.currentTime = 0;
+
+        hasStartedMedia = false;
+      }
     }
 
 
 window.addEventListener('load', loadWishesFromCSV);
 
-window.addEventListener('load', playMusicFromStart);
+homePage.addEventListener('click', function () {
+  if (!hasStartedMedia) {
+    playMediaFromStart();
+  }
+});
 
     openWishBtn.addEventListener('click', showWishPage);
 
