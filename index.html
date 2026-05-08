@@ -491,6 +491,7 @@
           height: 46px;
           margin-top: 18px;
           font-size: 18px;
+          background: #e2ceb2
         }
 
         .home-video-box {
@@ -539,8 +540,8 @@
 
         .home-graduation-img {
           width: 120px;
-          left: -15px;
-          top: 210px;
+          left: -20px;
+          top: 225px;
           transform: rotate(7deg);
           z-index: 7;
         }
@@ -720,7 +721,7 @@
 
     <img src="assets/khung_nhap_ho_ten.png" class="decor home-input-frame" alt="Khung nhập họ tên" />
     <div class="home-card-content">
-      <h2 class="home-card-title">Xin chào! Bồ là ai dợ?</h2>
+      <h2 class="home-card-title">Xin chào! Bồ là ai dọ?</h2>
       <input
         id="fullNameInput"
         class="name-input"
@@ -728,11 +729,19 @@
         placeholder="Nhập họ tên của bạn (Nguyễn Văn A)"
         autocomplete="off"
       />
-      <button id="openWishBtn" class="open-btn">Mở lời chúc</button>
+      <button id="openWishBtn" class="open-btn">Bấm vào đây</button>
     </div>
 
     <div class="home-video-box">
-      <video id="homeVideo" src="assets/video_compressed.mp4" muted loop playsinline preload="auto"></video>
+      <video
+        id="homeVideo"
+        src="assets/video_compressed.mp4"
+        poster="assets/video_poster.png"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+>     </video>
     </div>
 
     <audio id="bgMusic" loop preload="auto">
@@ -799,7 +808,22 @@
       '4 năm đại học trôi qua thật nhanh, nhưng những kỷ niệm thì sẽ còn ở lại rất lâu. Cảm ơn vì đã là một phần trong hành trình của mình. Mong tương lai sẽ thật dịu dàng với bạn.',
       'Chúc bạn sau lễ tốt nghiệp sẽ bước vào một hành trình mới với thật nhiều niềm tin, may mắn và cơ hội. Cảm ơn vì đã cùng mình tạo nên một thời sinh viên không thể nào quên.'
     ];
+    
+    function saveVisitorName(fullName, displayName) {
+      const scriptURL = 'https://script.google.com/u/0/home/projects/1ponZe36l09G2dx5VoAqxqtwMlEy7Y2cK3tBvRlKuVBMSwVuW-kr2SLg3/edit';
 
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: JSON.stringify({
+          fullName: fullName,
+          displayName: displayName
+        })
+      });
+    }
     /* 
       Danh sách người có lời chúc riêng.
       Viết tên ở dạng không dấu, chữ thường.
@@ -909,6 +933,7 @@
       const fullName = fullNameInput.value;
       const displayName = getLastTwoWords(fullName);
       const wish = getWishForName(fullName);
+      saveVisitorName(fullName, displayName);
 
       greetingTitle.textContent = 'Xin chào ' + displayName + ',';
       wishMessage.textContent = wish;
