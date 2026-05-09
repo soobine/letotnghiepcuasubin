@@ -5,7 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hộp lời chúc</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
   <style>
+    /* =========================
+      FONT CHỮ
+    ========================= */
+
+    /* Font chung toàn web */
+    body,
+    button,
+    input {
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    /* Tiêu đề chính và tiêu đề lời chúc */
+    .home-title,
+    .wish-title {
+      font-family: 'Playfair Display', cursive;
+      font-weight: 700;
+    }
+
+    /* Nút */
+    .open-btn,
+    .back-btn span,
+    .home-card-title {
+      font-family: 'Patrick Hand', cursive;
+      font-weight: 700;
+    }
+
+    /* Nội dung lời chúc và lời cảm ơn */
+    .wish-message,
+    .home-thank-text,
+    .transition-text {
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    /* Ô nhập tên */
+    .name-input,
+    .name-input::placeholder {
+      font-family: 'Patrick Hand', cursive;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -31,7 +72,7 @@
       position: relative;
       width: 1260px;
       height: 700px;
-      flex: 0 0 1102px;
+      flex: 0 0 1260px;
       background: #d4bfa2;
       overflow: hidden;
     }
@@ -56,20 +97,20 @@
     ========================= */
 
     .home-title-frame {
-      width: 850px;
+      width: 900px;
       height: 88px;
-      left: 150px;
-      top: 20px;
-      transform: rotate(-3deg);
+      left: 180px;
+      top: 25px;
+      transform: rotate(-2deg);
       z-index: 7;
     }
 
     .home-title {
       position: absolute;
-      width: 750px;
-      left: 200px;
+      width: 850px;
+      left: 215px;
       top: 45px;
-      transform: rotate(-3deg);
+      transform: rotate(-2.1deg);
       z-index: 8;
       text-align: center;
       color: #fff;
@@ -100,21 +141,21 @@
     }
 
     .home-card-title {
-      font-size: 20px;
+      font-size: 40px;
       font-weight: 700;
       color: #111;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
       white-space: nowrap;
     }
 
     .name-input {
       width: 310px;
-      height: 46px;
+      height: 50px;
       border: 2px solid #111;
       border-radius: 15px;
       background: transparent;
       padding: 0 18px;
-      font-size: 11px;
+      font-size: 20px;
       outline: none;
       color: #111;
       text-align: left;
@@ -127,22 +168,23 @@
 
     .open-btn {
       display: block;
-      width: 195px;
-      height: 54px;
+      width: 150px;
+      height: 40px;
       margin: 23px auto 0;
       border: 2px solid #111;
-      border-radius: 14px;
+      border-radius: 10px;
       background: transparent;
       color: #111;
-      font-size: 17px;
+      font-size: 25px;
       font-weight: 700;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.2s ease;
+      transform: rotate(deg);
     }
 
     .open-btn:hover {
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(238, 192, 106, 0.25);
     }
 
     .home-video-box {
@@ -200,7 +242,7 @@
       transform: rotate(6deg);
       color: #191919;
       line-height: 1.2;
-      font-size: 14.5px;
+      font-size: 13.7px;
       overflow: hidden;
     }
 
@@ -268,7 +310,7 @@
     .home-bg-paper-mid {
       width: 300px;
       left: 240px;
-      top: 450px;
+      top: 470px;
       transform: rotate(-6deg);
       opacity: 1;
       z-index: 7;
@@ -436,16 +478,12 @@
           min-height: 1080px;
         }
 
-        .home-bg-paper-left,
-        .home-bg-paper-top,
-        .home-bg-paper-mid {
-          display: none;
-        }
+        
 
         .home-title-frame {
-          width: 400px;
+          width: 375px;
           height: 70px;
-          left: 50%;
+          left: 49%;
           top: 30px;
           transform: translateX(-50%) rotate(-3deg);
         }
@@ -455,7 +493,7 @@
           left: 50%;
           top: 55px;
           transform: translateX(-50%) rotate(-3deg);
-          font-size: 25px;
+          font-size: 24px;
           letter-spacing: 2px;
         }
 
@@ -475,14 +513,14 @@
         }
 
         .home-card-title {
-          font-size: 20px;
+          font-size: 30px;
           margin-bottom: 14px;
         }
 
         .name-input {
           width: 290px;
           height: 42px;
-          font-size: 13px;
+          font-size: 17px;
           padding: 12px;
         }
 
@@ -560,7 +598,7 @@
           width: 100px;
           left: auto;
           right: 25px;
-          top: 820px;
+          top: 850px;
           transform: rotate(8deg);
         }
 
@@ -570,6 +608,39 @@
           top: 820px;
           transform: rotate(90deg);
         }
+        
+        /* Giấy decor bên trái */
+        .home-bg-paper-left {
+          width: 150px;
+          left: -20px;
+          top: 155px;
+          transform: rotate(2deg);
+          opacity: 0.72;
+          z-index: 1;
+        }
+
+        /* Giấy decor phải */
+        .home-bg-paper-top {
+          width: 160px;
+          left: auto;
+          right: -20px;
+          top: 125px;
+          transform: rotate(8deg);
+          opacity: 0.75;
+          z-index: 2;
+        }
+
+        /* Giấy decor ở giữa / dưới bước thư */
+        .home-bg-paper-mid {
+          width: 250px;
+          left: auto;
+          right: -60px;
+          top: 850px;
+          transform: rotate(-75deg);
+          opacity: 1;
+          z-index: 1;
+        }
+        
 
         /* ================= TRANG LỜI CHÚC MOBILE ================= */
 
@@ -653,18 +724,22 @@
         }
 
       .transition-page {
+        position: fixed !important;
+        inset: 0;
+        width: 100vw !important;
+        height: 100dvh !important;
+        min-height: 100dvh !important;
         background: #000;
-        position: relative;
-        overflow: hidden;
-        padding: 0;
+        padding: 0 !important;
+        z-index: 9999;
       }
 
       #heart {
         position: absolute;
         inset: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.2);
+        width: 100vw;
+        height: 100dvh;
+        background: #000;
         z-index: 1;
       }
 
@@ -758,7 +833,10 @@
         4 năm không quá dài, nhưng đủ để chúng ta có những kỷ niệm mà sau này nhắc lại chắc chắn sẽ mỉm cười. Dù tương lai mỗi người sẽ chọn cho mình một con đường riêng, mình vẫn luôn trân trọng vì chúng ta đã từng đồng hành cùng nhau trong những năm tháng thanh xuân đẹp nhất.
       </p>
       <p>
-        Cảm ơn mọi người đã là một phần trong hành trình của Subin.
+        Cảm ơn mọi người đã là một phần trong hành trình của Subin. Hy vọng chúng ta sau này, dù ở đâu, làm gì, cũng sẽ luôn vững vàng, hạnh phúc và thành công trên con đường mình chọn.
+      </p>
+      <p>
+        Thư đã dài, Subin xin dừng bút. Lời Bin chưa nói mọi người có thể nhập họ tên để xem Bin có gì nhắn nhủ với từng người hong nhe. Bái bai và hẹn gặp lại cả nhà!
       </p>
     </article>
   </section>  
